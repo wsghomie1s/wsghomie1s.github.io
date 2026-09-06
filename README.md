@@ -47,7 +47,6 @@ body::before {
 }
 .container { max-width: 1500px; margin: 0 auto; }
 
-/* Brand */
 .brand {
   text-align: center;
   font-size: 0.9rem;
@@ -68,7 +67,6 @@ body::before {
   text-shadow: 0 0 20px rgba(108,140,255,0.3);
 }
 
-/* Search */
 .search-wrapper {
   display: flex;
   justify-content: center;
@@ -107,7 +105,6 @@ body::before {
 }
 .search-bar button:hover { background: var(--accent-hover); }
 
-/* Tabs */
 .tabs {
   display: flex;
   justify-content: center;
@@ -139,7 +136,6 @@ body::before {
 .content-section.active { display: block; animation: fadeIn 0.3s ease; }
 @keyframes fadeIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
 
-/* Grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -210,10 +206,14 @@ body::before {
   font-size: 0.85rem;
   transition: background var(--transition);
   margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
 }
+.card button svg { width: 1em; height: 1em; }
 .card button:hover { background: var(--accent-hover); }
 
-/* Player Modal */
 #playerModal {
   display: none;
   position: fixed;
@@ -237,7 +237,6 @@ body::before {
 }
 #playerModal .close-player:hover { transform: scale(1.2); }
 
-/* Settings */
 .settings-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -251,7 +250,8 @@ body::before {
   border-radius: var(--radius-lg);
   padding: 1.5rem;
 }
-.setting-card h3 { margin-bottom: 1rem; font-size: 1.1rem; }
+.setting-card h3 { margin-bottom: 1rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem; }
+.setting-card h3 svg { width: 1.2em; height: 1.2em; }
 .setting-card select, .setting-card input[type="text"], .setting-card input[type="file"] {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -272,7 +272,11 @@ body::before {
   cursor: pointer;
   font-weight: 600;
   transition: background var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
+.setting-card button svg { width: 1em; height: 1em; }
 .setting-card button:hover { background: var(--accent-hover); }
 .theme-buttons {
   display: flex;
@@ -292,7 +296,6 @@ body::before {
 .theme-btn:hover { background: var(--surface-hover); }
 .theme-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
-/* Loading */
 .loading {
   text-align: center;
   padding: 2rem;
@@ -313,13 +316,11 @@ body::before {
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
 
-/* Responsive */
 @media (max-width: 768px) {
   .clock-display { font-size: 2.5rem; }
   .grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 0.8rem; }
@@ -336,7 +337,10 @@ body::before {
   <div class="search-wrapper">
     <div class="search-bar">
       <input type="text" id="searchInput" placeholder="Search movies, shows, anime, games...">
-      <button onclick="globalSearch()">Search</button>
+      <button onclick="globalSearch()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Search
+      </button>
     </div>
   </div>
 
@@ -345,18 +349,32 @@ body::before {
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.97 16.97L6.18 15.18C4.34 17.02 3.5 18.5 3.5 19.5C3.5 20.88 4.62 22 6 22C7 22 8.48 21.16 10.32 19.32L8.53 17.53C8.21 17.21 7.71 17 7.25 17C7 17 7 17 7.97 16.97M10 2C9.45 2 9 2.45 9 3V5H15V3C15 2.45 14.55 2 14 2H10M6 6C4.34 6 3 7.34 3 9V13C3 14.66 4.34 16 6 16H18C19.66 16 21 14.66 21 13V9C21 7.34 19.66 6 18 6H6M6 8H18V14H6V8M14 10V12H16V10H14M15.5 20.5C16.88 20.5 18 19.38 18 18C18 17 17.16 15.48 15.32 13.64L13.53 15.43C15.69 17.58 16.5 18.5 16.5 19C16.5 19.28 16.28 19.5 16 19.5C15.5 19.5 14.5 18.66 12.64 16.82L10.85 18.61C12.71 20.47 14.21 21.5 15.5 21.5M15.5 21.5C17.43 21.5 19 19.93 19 18C19 16.9 18.1 15.61 16.5 14.11C14.9 15.61 14 16.9 14 18C14 19.38 15.12 20.5 16.5 20.5"/></svg>
       Games
     </div>
-    <div class="tab" data-tab="movies">🎬 Movies</div>
-    <div class="tab" data-tab="shows">📺 Shows</div>
-    <div class="tab" data-tab="anime">🌸 Anime</div>
+    <div class="tab" data-tab="movies">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>
+      Movies
+    </div>
+    <div class="tab" data-tab="shows">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+      Shows
+    </div>
+    <div class="tab" data-tab="anime">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C7 6 5 10 5 14c0 3.866 3.134 7 7 7s7-3.134 7-7c0-4-2-8-7-12z"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/><path d="M9 16c.5 1 2 2 3 2s2.5-1 3-2"/></svg>
+      Anime
+    </div>
     <div class="tab" data-tab="youtube">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
       YouTube
     </div>
-    <div class="tab" data-tab="proxy">🌐 Proxy</div>
-    <div class="tab" data-tab="settings">⚙️ Settings</div>
+    <div class="tab" data-tab="proxy">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      Proxy
+    </div>
+    <div class="tab" data-tab="settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Settings
+    </div>
   </div>
 
-  <!-- Games -->
   <div id="games" class="content-section active">
     <div class="grid" id="gameGrid"></div>
     <div id="gameLoadMore" class="loading" style="display:none;">
@@ -364,41 +382,42 @@ body::before {
     </div>
   </div>
 
-  <!-- Movies -->
   <div id="movies" class="content-section">
     <div class="grid" id="movieGrid"></div>
     <button id="movieLoadMore" class="theme-btn" style="margin:1rem auto; display:block;">Load More Movies</button>
   </div>
 
-  <!-- Shows -->
   <div id="shows" class="content-section">
     <div class="grid" id="showGrid"></div>
     <button id="showLoadMore" class="theme-btn" style="margin:1rem auto; display:block;">Load More Shows</button>
   </div>
 
-  <!-- Anime -->
   <div id="anime" class="content-section">
     <div class="grid" id="animeGrid"></div>
     <button id="animeLoadMore" class="theme-btn" style="margin:1rem auto; display:block;">Load More Anime</button>
   </div>
 
-  <!-- YouTube -->
   <div id="youtube" class="content-section">
     <div class="setting-card" style="max-width:700px; margin:0 auto; text-align:center;">
-      <h3>YouTube Proxy (Invidious)</h3>
+      <h3><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube Proxy (Invidious)</h3>
       <input type="text" id="ytSearch" placeholder="Search YouTube or paste video URL">
-      <button onclick="searchYouTube()">Search</button>
+      <button onclick="searchYouTube()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Search
+      </button>
       <div id="ytResults" class="grid" style="margin-top:1rem;"></div>
     </div>
   </div>
 
-  <!-- Proxy -->
   <div id="proxy" class="content-section">
     <div class="setting-card" style="max-width:700px; margin:0 auto;">
-      <h3>Web Proxy</h3>
+      <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Web Proxy</h3>
       <div style="display:flex; gap:0.5rem;">
         <input type="text" id="proxyUrl" placeholder="Enter URL (https://...)" style="flex:1;">
-        <button onclick="navigateProxy()">Go</button>
+        <button onclick="navigateProxy()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 17 21 12 16 7"/><polyline points="21 12 9 12"/><polyline points="9 21 3 21 3 3 9 3"/></svg>
+          Go
+        </button>
       </div>
       <select id="proxyService" style="margin-top:0.5rem;">
         <option value="allorigins">AllOrigins</option>
@@ -411,11 +430,10 @@ body::before {
     </div>
   </div>
 
-  <!-- Settings -->
   <div id="settings" class="content-section">
     <div class="settings-grid">
       <div class="setting-card">
-        <h3>Search Engine</h3>
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search Engine</h3>
         <select id="searchEngine">
           <option value="default">Local Search</option>
           <option value="duckduckgo">DuckDuckGo</option>
@@ -423,7 +441,7 @@ body::before {
         </select>
       </div>
       <div class="setting-card">
-        <h3>Theme</h3>
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></svg> Theme</h3>
         <div class="theme-buttons" id="themeButtons">
           <button class="theme-btn" data-theme="dark">Dark</button>
           <button class="theme-btn" data-theme="light">Light</button>
@@ -436,17 +454,22 @@ body::before {
         </div>
       </div>
       <div class="setting-card">
-        <h3>Custom Background</h3>
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><image x="2" y="2" width="20" height="20" xlink:href=""/><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Custom Background</h3>
         <input type="text" id="customVideoUrl" placeholder="YouTube video URL for background">
-        <button onclick="setCustomVideo()">Set Video BG</button>
+        <button onclick="setCustomVideo()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 3 6 15 21 15"/><polyline points="21 5 21 19 18 19"/><polyline points="3 19 6 15"/></svg>
+          Set Video BG
+        </button>
         <input type="file" id="customImageInput" accept="image/*">
-        <button onclick="setCustomImage()">Set Image BG</button>
+        <button onclick="setCustomImage()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Set Image BG
+        </button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Player Modal -->
 <div id="playerModal">
   <button class="close-player" onclick="closePlayer()">×</button>
   <iframe id="playerFrame" src="" allowfullscreen></iframe>
@@ -456,7 +479,6 @@ body::before {
 // ==================== CONSTANTS & STATE ====================
 const GAMES_JSON_URL = 'https://raw.githubusercontent.com/3kh0/3kh0.github.io/main/games.json';
 const TMDB_API_KEY = '15d2ea6d0dc1d476efbca3eba2b9bbfb';
-const IMDB_DATASET_URL = 'https://datasets.imdbws.com/title.basics.tsv.gz';
 const INVIDIOUS_API = 'https://invidious.f5.si/api/v1';
 
 let games = [];
@@ -466,7 +488,7 @@ let anime = [];
 let currentMoviePage = 1;
 let currentShowPage = 1;
 let currentAnimePage = 1;
-let currentSource = 'flystream'; // default
+let currentSource = 'flystream';
 
 const EMBED_SOURCES = [
   { name: 'flystream', base: 'https://flystream.net/embed/', type: 'path' },
@@ -483,7 +505,7 @@ const EMBED_SOURCES = [
   { name: 'autoembed', base: 'https://autoembed.co/movie/tmdb/', type: 'tmdb' }
 ];
 
-// ==================== UTILITY FUNCTIONS ====================
+// ==================== UTILITY ====================
 function debounce(fn, delay) {
   let timeout;
   return function(...args) {
@@ -538,7 +560,6 @@ document.querySelectorAll('.tab').forEach(tab => {
     document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
     tab.classList.add('active');
     document.getElementById(tab.dataset.tab).classList.add('active');
-    // Lazy load content when tab activated
     if (tab.dataset.tab === 'games' && !document.getElementById('gameGrid').children.length) loadGames();
     if (tab.dataset.tab === 'movies' && !document.getElementById('movieGrid').children.length) loadMovies();
     if (tab.dataset.tab === 'shows' && !document.getElementById('showGrid').children.length) loadShows();
@@ -554,7 +575,7 @@ async function loadGames() {
     const res = await fetch(GAMES_JSON_URL);
     if (!res.ok) throw new Error('Failed to fetch games');
     games = await res.json();
-    renderGames(games.slice(0, 100)); // render first 100 for performance
+    renderGames(games.slice(0, 100));
     if (games.length > 100) {
       document.getElementById('gameLoadMore').style.display = 'flex';
       document.getElementById('gameLoadMore').onclick = () => renderGames(games.slice(100));
@@ -574,7 +595,10 @@ function renderGames(list) {
         <svg width="50" height="50" viewBox="0 0 24 24" fill="currentColor" style="opacity:0.6;"><path d="M7.97 16.97L6.18 15.18C4.34 17.02 3.5 18.5 3.5 19.5C3.5 20.88 4.62 22 6 22C7 22 8.48 21.16 10.32 19.32L8.53 17.53C8.21 17.21 7.71 17 7.25 17C7 17 7 17 7.97 16.97M10 2C9.45 2 9 2.45 9 3V5H15V3C15 2.45 14.55 2 14 2H10M6 6C4.34 6 3 7.34 3 9V13C3 14.66 4.34 16 6 16H18C19.66 16 21 14.66 21 13V9C21 7.34 19.66 6 18 6H6M6 8H18V14H6V8M14 10V12H16V10H14M15.5 20.5C16.88 20.5 18 19.38 18 18C18 17 17.16 15.48 15.32 13.64L13.53 15.43C15.69 17.58 16.5 18.5 16.5 19C16.5 19.28 16.28 19.5 16 19.5C15.5 19.5 14.5 18.66 12.64 16.82L10.85 18.61C12.71 20.47 14.21 21.5 15.5 21.5M15.5 21.5C17.43 21.5 19 19.93 19 18C19 16.9 18.1 15.61 16.5 14.11C14.9 15.61 14 16.9 14 18C14 19.38 15.12 20.5 16.5 20.5"/></svg>
       </div>
       <h3>${game.title}</h3>
-      <button onclick="playGame('${game.url}')">Play</button>
+      <button onclick="playGame('${game.url}')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        Play
+      </button>
     `;
     grid.appendChild(card);
   });
@@ -606,10 +630,13 @@ function renderMovies(movieList) {
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
-      <div class="poster">${poster ? `<img src="${poster}" alt="${movie.title}" loading="lazy">` : '<div class="fallback-icon">🎬</div>'}</div>
+      <div class="poster">${poster ? `<img src="${poster}" alt="${movie.title}" loading="lazy">` : '<div class="fallback-icon"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg></div>'}</div>
       <h3>${movie.title}</h3>
       <div class="meta">${movie.release_date || ''}</div>
-      <button onclick="playMovie('${movie.id}', 'movie', '${movie.title}', '${poster}', '${movie.overview || ''}', '${movie.imdb_id || ''}', null)">Play</button>
+      <button onclick="playMovie('${movie.id}', 'movie', '${movie.title}', '${poster}', '${movie.overview || ''}', '${movie.imdb_id || ''}', null)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        Play
+      </button>
     `;
     grid.appendChild(card);
   });
@@ -637,10 +664,13 @@ function renderShows(showList) {
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
-      <div class="poster">${poster ? `<img src="${poster}" alt="${show.name}" loading="lazy">` : '<div class="fallback-icon">📺</div>'}</div>
+      <div class="poster">${poster ? `<img src="${poster}" alt="${show.name}" loading="lazy">` : '<div class="fallback-icon"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg></div>'}</div>
       <h3>${show.name}</h3>
       <div class="meta">${show.first_air_date || ''}</div>
-      <button onclick="playShow('${show.id}', '${show.name}', '${poster}', '${show.overview || ''}', '${show.imdb_id || ''}')">Play</button>
+      <button onclick="playShow('${show.id}', '${show.name}', '${poster}', '${show.overview || ''}', '${show.imdb_id || ''}')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        Play
+      </button>
     `;
     grid.appendChild(card);
   });
@@ -669,10 +699,13 @@ function renderAnime(animeList) {
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
-      <div class="poster">${poster ? `<img src="${poster}" alt="${title}" loading="lazy">` : '<div class="fallback-icon">🌸</div>'}</div>
+      <div class="poster">${poster ? `<img src="${poster}" alt="${title}" loading="lazy">` : '<div class="fallback-icon"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C7 6 5 10 5 14c0 3.866 3.134 7 7 7s7-3.134 7-7c0-4-2-8-7-12z"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/><path d="M9 16c.5 1 2 2 3 2s2.5-1 3-2"/></svg></div>'}</div>
       <h3>${title}</h3>
       <div class="meta">${item.score || ''}</div>
-      <button onclick="playAnime('${item.mal_id}', '${title}', '${poster}', '${item.synopsis || ''}')">Play</button>
+      <button onclick="playAnime('${item.mal_id}', '${title}', '${poster}', '${item.synopsis || ''}')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        Play
+      </button>
     `;
     grid.appendChild(card);
   });
@@ -691,9 +724,7 @@ function closePlayer() {
   document.getElementById('playerFrame').src = '';
 }
 
-// Movie/Show/Anime playback with fallback
 function playMovie(tmdbId, type, title, poster, overview, imdbId) {
-  // For TMDB movies, we often have imdb_id; if not, use tmdb id for some sources.
   const data = { tmdbId, imdbId: imdbId || '', type: 'movie', season: null, episode: null };
   trySources(data, title);
 }
@@ -707,7 +738,6 @@ function playShow(tmdbId, title, poster, overview, imdbId) {
 }
 
 function playAnime(malId, title, poster, synopsis) {
-  // Anime often not on TMDB; we'll try id-based sources with malId as imdbId
   const data = { tmdbId: malId, imdbId: 'tt' + malId, type: 'movie', season: null, episode: null };
   trySources(data, title);
 }
@@ -715,8 +745,8 @@ function playAnime(malId, title, poster, synopsis) {
 function trySources(data, title) {
   let sourceIndex = 0;
   const iframe = document.getElementById('playerFrame');
-  openPlayer(''); // open modal blank first
-  iframe.onload = null; // clear previous
+  openPlayer('');
+  iframe.onload = null;
   iframe.onerror = null;
 
   function attemptNext() {
@@ -729,7 +759,6 @@ function trySources(data, title) {
     let url = getEmbedUrl(source, data);
     console.log(`Trying source ${source.name}: ${url}`);
     iframe.onload = () => {
-      // Check if iframe actually loaded content (not blank/error)
       setTimeout(() => {
         try {
           const doc = iframe.contentDocument || iframe.contentWindow.document;
@@ -758,7 +787,6 @@ async function searchYouTube() {
   const resultsDiv = document.getElementById('ytResults');
   resultsDiv.innerHTML = '<div class="loading"><div class="spinner"></div>Searching...</div>';
   try {
-    // Check if it's a URL
     if (query.includes('youtube.com/watch') || query.includes('youtu.be/')) {
       const videoId = extractYouTubeId(query);
       if (videoId) {
@@ -775,10 +803,13 @@ async function searchYouTube() {
       const card = document.createElement('div');
       card.className = 'card';
       card.innerHTML = `
-        <div class="poster">${video.videoThumbnails?.[0]?.url ? `<img src="${video.videoThumbnails[0].url}" alt="${video.title}" loading="lazy">` : '<div class="fallback-icon">▶️</div>'}</div>
+        <div class="poster">${video.videoThumbnails?.[0]?.url ? `<img src="${video.videoThumbnails[0].url}" alt="${video.title}" loading="lazy">` : '<div class="fallback-icon"><svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></div>'}</div>
         <h3>${video.title}</h3>
         <div class="meta">${video.author} · ${video.publishedText || ''}</div>
-        <button onclick="openPlayer('https://www.youtube.com/embed/${video.videoId}')">Watch</button>
+        <button onclick="openPlayer('https://www.youtube.com/embed/${video.videoId}')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Watch
+        </button>
       `;
       resultsDiv.appendChild(card);
     });
@@ -820,19 +851,16 @@ function navigateProxy() {
 function globalSearch() {
   const q = document.getElementById('searchInput').value.toLowerCase().trim();
   if (!q) return;
-  // Search games
   const gameCards = document.querySelectorAll('#gameGrid .card');
   gameCards.forEach(c => {
     const title = c.querySelector('h3').textContent.toLowerCase();
     c.style.display = title.includes(q) ? 'flex' : 'none';
   });
-  // Search movies
   const movieCards = document.querySelectorAll('#movieGrid .card, #showGrid .card, #animeGrid .card');
   movieCards.forEach(c => {
     const title = c.querySelector('h3').textContent.toLowerCase();
     c.style.display = title.includes(q) ? 'flex' : 'none';
   });
-  // If on movies/shows/anime tab and no results, maybe load more? Not needed.
 }
 
 // ==================== THEMES ====================
@@ -860,13 +888,11 @@ function setTheme(themeName) {
   root.style.setProperty('--accent-hover', t.accent);
   root.style.setProperty('--border', t.border);
   localStorage.setItem('theme', themeName);
-  // Update active button
   document.querySelectorAll('.theme-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.theme === themeName);
   });
 }
 
-// Custom background
 function setCustomVideo() {
   const url = document.getElementById('customVideoUrl').value.trim();
   if (!url) return;
@@ -890,27 +916,22 @@ function setCustomImage() {
   }
 }
 
-// ==================== INITIALIZATION ====================
-// Load saved theme
+// ==================== INIT ====================
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme) setTheme(savedTheme);
 else setTheme('dark');
 
-// Load saved search engine
 const savedEngine = localStorage.getItem('searchEngine');
 if (savedEngine) document.getElementById('searchEngine').value = savedEngine;
 
-// Theme buttons event
 document.querySelectorAll('.theme-btn').forEach(btn => {
   btn.addEventListener('click', () => setTheme(btn.dataset.theme));
 });
 
-// Search engine change
 document.getElementById('searchEngine').addEventListener('change', function() {
   localStorage.setItem('searchEngine', this.value);
 });
 
-// Load games initially
 loadGames();
 </script>
 </body>
